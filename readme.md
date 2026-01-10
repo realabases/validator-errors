@@ -72,7 +72,7 @@ func main() {
 		return fmt.Sprintf("%s must be at least %s chars!!!!!", e.Field(), e.Param())
 	})
 
-    loginERrors.RemoveRule("required")
+    loginErrors.RemoveRule("required")
 
     req := LoginRequest{
         Username: "",
