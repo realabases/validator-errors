@@ -16,23 +16,27 @@ go get github.com/realabases/validator-errors
 ve := validatorerrors.New()
 ```
 
-### Add rules
+### Add/Remove rules
 
-Use built-in defaults for common tags:
+Below are pre-made messages for some common tags (required, min, max, email):
 
 ```go
 ve.AddDefaultRule("required") // "Username is required"
-ve.AddDefaultRule("min")      // "Password must be at least 8 characters"
-ve.AddDefaultRule("max")      // "Field can't be more than X characters"
 ve.AddDefaultRule("email")    // "Email must be a valid email"
 ```
 
-Or define custom messages:
+You can also add your custom rules:
 
 ```go
 ve.AddRule("max", func(e validator.FieldError) string {
     return fmt.Sprintf("%s cantttt beee moreee thannn %s chaaaarsss", e.Field(), e.Param())
 })
+```
+
+And remove rules for whatever reason:
+
+```go
+ve.RemoveRule("min")
 ```
 
 ### Format errors
